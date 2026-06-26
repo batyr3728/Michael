@@ -1,0 +1,419 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== БАЗА ===== */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #0a0a0f;
+    color: #e8e8e8;
+    line-height: 1.8;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ===== ПАРЯЩИЕ ЭЛЕМЕНТЫ (вместо конфетти) ===== */
+#floating-elements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.float-item {
+    position: absolute;
+    opacity: 0.12;
+    font-size: 24px;
+    animation: floatAround linear infinite;
+    color: #b8a88a;
+    user-select: none;
+}
+
+@keyframes floatAround {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 0.12;
+    }
+    25% {
+        transform: translate(30px, -40px) rotate(90deg) scale(1.1);
+        opacity: 0.18;
+    }
+    50% {
+        transform: translate(-20px, -80px) rotate(180deg) scale(0.9);
+        opacity: 0.12;
+    }
+    75% {
+        transform: translate(40px, -50px) rotate(270deg) scale(1.05);
+        opacity: 0.15;
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg) scale(1);
+        opacity: 0.12;
+    }
+}
+
+/* ===== КОНТЕЙНЕР ===== */
+.container {
+    max-width: 860px;
+    width: 100%;
+    background: #12121a;
+    border-radius: 16px;
+    padding: 50px 55px;
+    border: 1px solid #2a2a35;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+    position: relative;
+    z-index: 1;
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== ШАПКА ===== */
+.header {
+    text-align: center;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #2a2a35;
+    margin-bottom: 35px;
+}
+
+.header h1 {
+    font-size: 3.2em;
+    font-weight: 700;
+    color: #f0e6d3;
+    letter-spacing: 6px;
+    margin-bottom: 4px;
+}
+
+.header .subtitle {
+    font-size: 1.1em;
+    color: #8888a0;
+    letter-spacing: 3px;
+}
+
+.header .tagline {
+    font-size: 0.9em;
+    color: #b8a88a;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin-top: 6px;
+}
+
+/* ===== СЕКЦИИ ===== */
+section {
+    margin-bottom: 45px;
+}
+
+section:last-of-type {
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #f0e6d3;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #1e1e2a;
+}
+
+p {
+    color: #c8c8d8;
+    margin-bottom: 14px;
+}
+
+p strong {
+    color: #d4c8b0;
+}
+
+/* ===== ДОСТИЖЕНИЯ ===== */
+#achievements ul {
+    list-style: none;
+    padding: 0;
+}
+
+#achievements li {
+    display: flex;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid #1a1a26;
+    transition: background 0.2s ease, padding 0.2s ease;
+}
+
+#achievements li:last-child {
+    border-bottom: none;
+}
+
+#achievements li:hover {
+    background: #181822;
+    padding-left: 10px;
+}
+
+#achievements .year {
+    min-width: 75px;
+    font-weight: 700;
+    color: #b8a88a;
+    font-size: 0.95em;
+    flex-shrink: 0;
+}
+
+#achievements .desc {
+    color: #c8c8d8;
+}
+
+/* ===== ДИСКОГРАФИЯ ===== */
+.albums-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 14px;
+}
+
+.album {
+    background: #181822;
+    padding: 16px 14px;
+    border-radius: 8px;
+    border: 1px solid #252533;
+    text-align: center;
+    transition: all 0.25s ease;
+    cursor: default;
+}
+
+.album:hover {
+    background: #222232;
+    border-color: #b8a88a;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.album .year {
+    display: block;
+    font-size: 0.7em;
+    color: #666680;
+    letter-spacing: 1px;
+}
+
+.album .title {
+    display: block;
+    font-size: 1.05em;
+    font-weight: 600;
+    color: #f0e6d3;
+    margin-top: 4px;
+}
+
+.album .sales {
+    display: block;
+    font-size: 0.75em;
+    color: #8888a0;
+    margin-top: 4px;
+}
+
+/* ===== ФАКТЫ ===== */
+.fact-box {
+    background: #181822;
+    border-radius: 10px;
+    padding: 30px 30px 25px;
+    border: 1px solid #252533;
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+.fact-box:hover {
+    border-color: #3a3a50;
+}
+
+#fact-display {
+    font-size: 1.1em;
+    color: #d0d0e0;
+    min-height: 65px;
+    margin-bottom: 20px;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+#fact-display.fade {
+    opacity: 0;
+    transform: translateY(-8px);
+}
+
+#fact-btn {
+    background: transparent;
+    color: #b8a88a;
+    border: 1px solid #3a3a50;
+    padding: 10px 34px;
+    font-size: 0.85em;
+    font-weight: 500;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+#fact-btn:hover {
+    background: #b8a88a;
+    color: #12121a;
+    border-color: #b8a88a;
+}
+
+#fact-btn:active {
+    transform: scale(0.96);
+}
+
+.fact-count {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 0.8em;
+    color: #555570;
+    letter-spacing: 1px;
+}
+
+/* ===== НАСЛЕДИЕ ===== */
+#legacy p:last-child {
+    margin-bottom: 0;
+}
+
+/* ===== ЦИТАТЫ ===== */
+.quote {
+    padding: 22px 30px;
+    border-left: 4px solid #b8a88a;
+    background: #181822;
+    border-radius: 0 10px 10px 0;
+    font-size: 1.1em;
+    color: #d8d8e8;
+    font-style: italic;
+    transition: all 0.3s ease;
+    margin-bottom: 18px;
+}
+
+.quote:last-child {
+    margin-bottom: 0;
+}
+
+.quote:hover {
+    background: #1e1e2e;
+    padding-left: 38px;
+}
+
+.quote footer {
+    margin-top: 8px;
+    font-style: normal;
+    font-weight: 600;
+    color: #b8a88a;
+    font-size: 0.8em;
+    letter-spacing: 1px;
+}
+
+/* ===== ФУТЕР ===== */
+.footer {
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: 1px solid #1a1a26;
+    color: #666680;
+    font-size: 0.85em;
+}
+
+.footer .links {
+    margin-top: 6px;
+}
+
+.footer a {
+    color: #8888a0;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer a:hover {
+    color: #b8a88a;
+}
+
+.footer .dot {
+    margin: 0 10px;
+    color: #333345;
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 700px) {
+    .container {
+        padding: 30px 25px;
+    }
+
+    .header h1 {
+        font-size: 2.2em;
+        letter-spacing: 3px;
+    }
+
+    .header .tagline {
+        letter-spacing: 4px;
+        font-size: 0.75em;
+    }
+
+    .albums-grid {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    }
+
+    .quote {
+        padding: 16px 18px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 420px) {
+    body {
+        padding: 16px 10px;
+    }
+
+    .container {
+        padding: 20px 14px;
+        border-radius: 10px;
+    }
+
+    .header h1 {
+        font-size: 1.6em;
+        letter-spacing: 2px;
+    }
+
+    #achievements li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #achievements .year {
+        margin-bottom: 2px;
+        font-size: 0.85em;
+    }
+
+    .fact-box {
+        padding: 18px 16px;
+    }
+
+    #fact-display {
+        font-size: 0.95em;
+        min-height: 55px;
+    }
+
+    .quote {
+        padding: 14px 16px;
+        font-size: 0.9em;
+    }
+}
